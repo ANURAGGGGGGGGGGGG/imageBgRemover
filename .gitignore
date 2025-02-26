@@ -1,0 +1,45 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+# Environment variables
+.env
+
+# Build outputs
+/build
+/dist
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache files
+.cache/
+.next/
+out/
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.swp
+*.swo
+*.swn
+
+# Coverage reports
+coverage/
+.nyc_output
+
+# Production
+/.vercel/
+/.netlify/

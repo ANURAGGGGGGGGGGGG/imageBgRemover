@@ -1,0 +1,71 @@
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    line-height: 1.6;
+    font-family: "Bebas Neue", serif;
+    
+    border-radius: 12px;
+}
+
+/* Light & Dark Theme Support */
+body.light .about-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, #ffffffed, #f0f8ff);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+    color: #333;
+}
+
+body.dark .about-container {
+    background-color: #222;
+    color: #fff;
+    margin-top: 50px;
+}
+
+/* Headings */
+.about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* Paragraph Styling */
+.about-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* List Styling */
+.about-list {
+    list-style: none;
+    padding: 0;
+}
+
+.about-list li {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Animation */
+.about-list li:hover {
+    transform: translateX(5px);
+}
+
+/* Links */
+.about-content a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}

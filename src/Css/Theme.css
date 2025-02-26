@@ -1,0 +1,18 @@
+/* Light Mode */
+body.light {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+/* Navbar Title & Links - Smooth Transition */
+.navbar-title, .navbar-links li a {
+  transition: color 0.4s ease-in-out;
+}

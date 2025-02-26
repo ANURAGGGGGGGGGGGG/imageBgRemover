@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+
+/* Base Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+/* Light & Dark Mode Navbar */
+body.light .navbar {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.dark .navbar {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Navbar Title */
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    order: 1;
+}
+
+/* Navigation Links (visible on larger screens) */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    order: 2;
+}
+
+.navbar-links li {
+    margin: 0 1rem;
+    position: relative;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 0;
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-links li a:hover::after {
+    width: 100%;
+}
+
+/* Navigation Actions (Theme toggle + Hamburger) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    order: 3;
+}
+
+.theme-toggle {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 1s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #777;
+}
+
+/* Hamburger Menu - hidden by default on larger screens */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.4s ease;
+}
+
+body.dark .hamburger .bar {
+    background-color: #fff;
+}
+
+/* Responsive Styles for 425px and smaller */
+@media screen and (max-width: 426px) {
+    /* Reorder navbar elements */
+    .navbar-title {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .nav-actions {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .navbar-links {
+        order: 3;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+    }
+    body.dark .navbar-links {
+        background-color: #222;
+    }
+    .navbar-links.active {
+        display: flex;
+    }
+    /* Show hamburger icon on small screens */
+    .hamburger {
+        display: flex;
+    }
+}

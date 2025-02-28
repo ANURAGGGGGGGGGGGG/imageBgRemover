@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/imageBgRemover/static/css/main.81b7efae.css",
+    "main.js": "/imageBgRemover/static/js/main.3e94ceac.js",
+    "static/js/626.69a8d0d9.chunk.js": "/imageBgRemover/static/js/626.69a8d0d9.chunk.js",
+    "static/js/284.d0bbb41f.chunk.js": "/imageBgRemover/static/js/284.d0bbb41f.chunk.js",
+    "static/media/ort-wasm-simd-threaded.jsep.wasm": "/imageBgRemover/static/media/ort-wasm-simd-threaded.jsep.21c580b4d212f4539f52.wasm",
+    "static/media/ort.webgpu.bundle.min.mjs": "/imageBgRemover/static/media/ort.webgpu.bundle.min.f7cf686fd3c783495a1a.mjs",
+    "static/media/ort.bundle.min.mjs": "/imageBgRemover/static/media/ort.bundle.min.5b5295853bb91416eb93.mjs",
+    "index.html": "/imageBgRemover/index.html",
+    "main.81b7efae.css.map": "/imageBgRemover/static/css/main.81b7efae.css.map",
+    "main.3e94ceac.js.map": "/imageBgRemover/static/js/main.3e94ceac.js.map",
+    "626.69a8d0d9.chunk.js.map": "/imageBgRemover/static/js/626.69a8d0d9.chunk.js.map",
+    "284.d0bbb41f.chunk.js.map": "/imageBgRemover/static/js/284.d0bbb41f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81b7efae.css",
+    "static/js/main.3e94ceac.js"
+  ]
+}

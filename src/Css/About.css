@@ -1,0 +1,94 @@
+/* About.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.about-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    line-height: 1.6;
+    font-family: "Bebas Neue", sans-serif;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Theme Support */
+body.light .about-container {
+    background: linear-gradient(135deg, #ffffffed, #f0f8ff);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.dark .about-container {
+    background: linear-gradient(135deg, #222222ed, #1a1a1a);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    color: inherit;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.about-list li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.about-list li:hover {
+    transform: translateX(10px);
+}
+
+.about-content a {
+    color: #007bff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.about-content a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding: 2rem 1rem;
+        margin: 30px auto;
+    }
+    
+    .about-content h1 {
+        font-size: 2rem;
+    }
+    
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+}

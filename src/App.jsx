@@ -8,7 +8,6 @@ function App() {
     const [error, setError] = useState(null);
     const abortControllerRef = useRef(null);
 
-    // Cleanup object URLs
     useEffect(() => {
         return () => {
             images.forEach(img => {
@@ -73,20 +72,19 @@ function App() {
         } finally {
             setLoading(false);
         }
-    }, []); // processImages has no dependencies
+    }, []);
 
-    // Fixed dependencies here
     const handleFileChange = useCallback((e) => {
         const files = Array.from(e.target.files);
         processImages(files);
-    }, [processImages]); // Added processImages as dependency
+    }, [processImages]);
 
     // Fixed dependencies here
     const handleDrop = useCallback((e) => {
         e.preventDefault();
         const files = Array.from(e.dataTransfer.files);
         processImages(files);
-    }, [processImages]); // Added processImages as dependency
+    }, [processImages]);
 
     const cancelProcessing = useCallback(() => {
         if (abortControllerRef.current) {
@@ -95,7 +93,6 @@ function App() {
         }
     }, []);
 
-    // ... rest of the component remains the same ...
 
 
 const renderedImages = useMemo(() => (

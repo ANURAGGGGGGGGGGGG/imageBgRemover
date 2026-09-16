@@ -1,26 +1,94 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
+
 :root {
+  color-scheme: light;
   --bg-color: #ffffff;
   --text-color: #333333;
   --nav-bg: #f8f9fa;
-  --nav-shadow: rgba(0, 0, 0, 0.1);
-  --nav-c : black;
+  --nav-shadow: rgba(0, 0, 0, 0.08);
+  --nav-c: #000000;
+
+  --surface-color: #ffffff;
+  --surface-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+  --border-color: #e0e0e0;
+
+  --brand: #007bff;
+  --brand-hover: #0062d6;
+  --success: #28a745;
+  --success-hover: #1f8a38;
+  --danger: #dc3545;
+  --danger-hover: #b92d3a;
+
+  --subtle: #6b7280;
+
+  --drop-hover-bg: rgba(0, 123, 255, 0.05);
+  --drop-active-bg: rgba(0, 123, 255, 0.1);
+  --checker: rgba(0, 0, 0, 0.06);
+
+  --error-bg: #fef2f2;
+  --error-border: #f5c6cb;
+  --error-text: #b02a37;
+
+  --success-bg: #d4edda;
+  --success-border: #b7dfbe;
+  --success-text: #1e7e34;
+
+  --input-bg: #ffffff;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 .dark {
-  --bg-color: #1a1a1a;
-  --text-color: #f8f9fa;
-  --nav-bg: #222222;
-  --nav-c : white;
-  --nav-shadow: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
+  --bg-color: #161616;
+  --text-color: #f5f5f5;
+  --nav-bg: #1f1f1f;
+  --nav-c: #f5f5f5;
+  --nav-shadow: rgba(0, 0, 0, 0.5);
+
+  --surface-color: #212121;
+  --surface-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.5);
+  --border-color: #3a3a3a;
+
+  --brand: #4d9fff;
+  --brand-hover: #79b6ff;
+  --success: #2fbf56;
+  --success-hover: #3fd36a;
+  --danger: #ff6b6b;
+  --danger-hover: #ff8a8a;
+
+  --subtle: #9b9b9b;
+
+  --drop-hover-bg: rgba(77, 159, 255, 0.08);
+  --drop-active-bg: rgba(77, 159, 255, 0.16);
+  --checker: rgba(255, 255, 255, 0.07);
+
+  --error-bg: rgba(255, 107, 107, 0.12);
+  --error-border: rgba(255, 107, 107, 0.35);
+  --error-text: #ff9090;
+
+  --success-bg: rgba(47, 191, 86, 0.12);
+  --success-border: rgba(47, 191, 86, 0.35);
+  --success-text: #73d692;
+
+  --input-bg: #2b2b2b;
 }
 
 html {
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+body {
+  background-color: var(--bg-color);
 }
 
 .navbar {
@@ -33,13 +101,26 @@ html {
   color: var(--bg-color);
 }
 
-.theme-toggle:hover {
-  opacity: 0.9;
-}
-.nav-button{
+.nav-button {
   color: var(--nav-c);
 }
 
+/* Smooth theme flips. Restricted to color properties only --
+   a global box-shadow or layout transition is too expensive. */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 260ms var(--ease-in-out),
+    color 260ms var(--ease-in-out),
+    border-color 260ms var(--ease-in-out),
+    fill 260ms var(--ease-in-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

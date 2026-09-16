@@ -6,7 +6,10 @@ function App() {
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [dragActive, setDragActive] = useState(false);
     const abortControllerRef = useRef(null);
+    const dragDepth = useRef(0);
+    const inputRef = useRef(null);
 
     useEffect(() => {
         return () => {
@@ -77,14 +80,46 @@ function App() {
     const handleFileChange = useCallback((e) => {
         const files = Array.from(e.target.files);
         processImages(files);
+        e.target.value = '';
     }, [processImages]);
 
-    // Fixed dependencies here
     const handleDrop = useCallback((e) => {
         e.preventDefault();
+        dragDepth.current = 0;
+        setDragActive(false);
         const files = Array.from(e.dataTransfer.files);
         processImages(files);
     }, [processImages]);
+
+    const handleDragEnter = useCallback((e) => {
+        e.preventDefault();
+        dragDepth.current += 1;
+        setDragActive(true);
+    }, []);
+
+    const handleDragOver = useCallback((e) => {
+        e.preventDefault();
+    }, []);
+
+    const handleDragLeave = useCallback((e) => {
+        e.preventDefault();
+        dragDepth.current -= 1;
+        if (dragDepth.current <= 0) {
+            dragDepth.current = 0;
+            setDragActive(false);
+        }
+    }, []);
+
+    const openFilePicker = useCallback(() => {
+        if (!loading && inputRef.current) {
+            inputRef.current.click();
+        }
+    }, [loading]);
+
+    const handleAreaClick = useCallback((e) => {
+        if (e.target.closest('.upload-label')) return;
+        openFilePicker();
+    }, [openFilePicker]);
 
     const cancelProcessing = useCallback(() => {
         if (abortControllerRef.current) {
@@ -93,66 +128,82 @@ function App() {
         }
     }, []);
 
-
-
-const renderedImages = useMemo(() => (
-    images.map((img) => (
-        <div key={img.id} className="image-container">
-            <div>
-                <h2>Original</h2>
-                <img src={img.original} alt="Original" className="image-preview" loading="lazy" />
+    const renderedImages = useMemo(() => (
+        images.map((img, index) => (
+            <div
+                key={img.id}
+                className="image-container"
+                style={{ animationDelay: `${Math.min(index, 4) * 60}ms` }}
+            >
+                <div>
+                    <h2>Original</h2>
+                    <img src={img.original} alt="Original" className="image-preview" loading="lazy" />
+                </div>
+                <div>
+                    <h2>Without Background</h2>
+                    <img src={img.result} alt="Background Removed" className="image-preview" loading="lazy" />
+                    <a href={img.result} download={`background_removed_${img.id}.png`} className="download-btn">
+                        Download
+                    </a>
+                </div>
             </div>
-            <div>
-                <h2>Without Background</h2>
-                <img src={img.result} alt="Background Removed" className="image-preview" loading="lazy" />
-                <a href={img.result} download={`background_removed_${img.id}.png`}>
-                    <button className="download-btn">Download</button>
-                </a>
+        ))
+    ), [images]);
+
+    return (
+        <div className="container">
+            <h1>Background Remover</h1>
+
+            <div
+                className={`drop-area ${dragActive ? 'drag-over' : ''}`}
+                onClick={handleAreaClick}
+                onDragEnter={handleDragEnter}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                role="region"
+                aria-label="File drop area. Drag and drop images here, or use the upload button."
+            >
+                <svg className="drop-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p className="drop-title">Drag & drop images here, or click anywhere</p>
+                <label className={`upload-label ${loading ? 'disabled' : ''}`}>
+                    Click to Upload
+                    <input
+                        ref={inputRef}
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onChange={handleFileChange}
+                        className="hidden-input"
+                        disabled={loading}
+                    />
+                </label>
+                <p className="file-limits">(Max 5 files, 5MB each)</p>
+            </div>
+
+            {loading && (
+                <div className="loading-state" role="status" aria-live="polite">
+                    <div className="spinner"></div>
+                    <p className="loading-text">Removing backgrounds…</p>
+                </div>
+            )}
+            {error && <p className="error" role="alert">{error}</p>}
+
+            {loading && (
+                <button className="cancel-btn" onClick={cancelProcessing}>
+                    Cancel Processing
+                </button>
+            )}
+
+            <div className="image-grid">
+                {renderedImages}
             </div>
         </div>
-    ))
-), [images]);
-
-return (
-    <div className="container">
-        <h1>Background Remover</h1>
-
-        <div
-            className="drop-area"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDrop}
-            role="region"
-            aria-label="File drop area"
-        >
-            <p>Drag & Drop images here or click below</p>
-            <label className="upload-label">
-                Click to Upload
-                <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleFileChange}
-                    className="hidden-input"
-                    disabled={loading}
-                />
-            </label>
-            <p className="file-limits">(Max 5 files, 5MB each)</p>
-        </div>
-
-        {loading && <div className="spinner"></div>}
-        {error && <p className="error">{error}</p>}
-
-        {loading && (
-            <button className="cancel-btn" onClick={cancelProcessing}>
-                Cancel Processing
-            </button>
-        )}
-
-        <div className="image-grid">
-            {renderedImages}
-        </div>
-    </div>
-);
+    );
 }
 
 export default App;

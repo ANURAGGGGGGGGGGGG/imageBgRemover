@@ -1,93 +1,112 @@
 /* About.css */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .about-container {
     max-width: 900px;
-    margin: 50px auto;
+    margin: 48px auto;
     padding: 3rem 2rem;
     text-align: center;
     line-height: 1.6;
-    font-family: "Bebas Neue", sans-serif;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    font-family: 'Barlow', sans-serif;
+    border-radius: var(--radius-lg);
+    background: var(--surface-color);
+    box-shadow: var(--surface-shadow);
+    animation: about-in 300ms var(--ease-out) backwards;
 }
 
-/* Theme Support */
-body.light .about-container {
-    background: linear-gradient(135deg, #ffffffed, #f0f8ff);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    color: #333;
-}
-
-body.dark .about-container {
-    background: linear-gradient(135deg, #222222ed, #1a1a1a);
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+@keyframes about-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .about-content {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto;
 }
 
-.about-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+.about-content h1,
+.about-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
     letter-spacing: 2px;
+}
+
+.about-content h1 {
+    font-size: 2.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .about-content h2 {
     font-size: 2rem;
-    margin: 2rem 0 1rem;
+    margin: 2.5rem 0 1rem;
     color: inherit;
 }
 
 .about-content p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--subtle);
+    max-width: 640px;
+    margin: 0 auto 1.25rem;
     line-height: 1.8;
 }
 
 .about-list {
     list-style: none;
     padding: 0;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 560px;
+    text-align: left;
 }
 
 .about-list li {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    padding: 0.8rem;
-    background: rgba(0, 123, 255, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    font-size: 1.05rem;
+    margin: 0.75rem 0;
+    padding: 0.85rem 1.25rem;
+    background: var(--drop-hover-bg);
+    border-left: 3px solid var(--brand);
+    border-radius: var(--radius-sm);
+    transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 
-.about-list li:hover {
-    transform: translateX(10px);
+@media (hover: hover) and (pointer: fine) {
+    .about-list li:hover {
+        transform: translateX(4px);
+        background: var(--drop-active-bg);
+    }
 }
 
 .about-content a {
-    color: #007bff;
+    color: var(--brand);
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    font-weight: 500;
+    text-underline-offset: 3px;
+    transition: color 180ms var(--ease-out);
 }
 
-.about-content a:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+    .about-content a:hover {
+        color: var(--brand-hover);
+        text-decoration: underline;
+    }
 }
 
 @media (max-width: 768px) {
     .about-container {
-        padding: 2rem 1rem;
-        margin: 30px auto;
+        margin: 24px auto;
+        padding: 2rem 1.25rem;
     }
-    
+
     .about-content h1 {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
-    
+
     .about-content h2 {
         font-size: 1.8rem;
     }

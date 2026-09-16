@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/imageBgRemover/static/css/main.3e6b1529.css",
-    "main.js": "/imageBgRemover/static/js/main.fdb827eb.js",
-    "static/js/626.7407664a.chunk.js": "/imageBgRemover/static/js/626.7407664a.chunk.js",
-    "static/js/284.4dad1264.chunk.js": "/imageBgRemover/static/js/284.4dad1264.chunk.js",
-    "static/media/ort-wasm-simd-threaded.jsep.wasm": "/imageBgRemover/static/media/ort-wasm-simd-threaded.jsep.03bafc41e28c2f1e46f4.wasm",
-    "static/media/ort.webgpu.bundle.min.mjs": "/imageBgRemover/static/media/ort.webgpu.bundle.min.a1302a30d29ed0cce201.mjs",
-    "static/media/ort.bundle.min.mjs": "/imageBgRemover/static/media/ort.bundle.min.31b924dcd5c3ccbbf33d.mjs",
+    "main.css": "/imageBgRemover/static/css/main.f99bb34d.css",
+    "main.js": "/imageBgRemover/static/js/main.aef245cb.js",
+    "static/js/626.26a0030b.chunk.js": "/imageBgRemover/static/js/626.26a0030b.chunk.js",
+    "static/js/284.d8b9a392.chunk.js": "/imageBgRemover/static/js/284.d8b9a392.chunk.js",
+    "static/media/ort-wasm-simd-threaded.jsep.wasm": "/imageBgRemover/static/media/ort-wasm-simd-threaded.jsep.ce14fe5a0a12cc7d4389.wasm",
+    "static/media/ort.webgpu.bundle.min.mjs": "/imageBgRemover/static/media/ort.webgpu.bundle.min.12f792549371ce713eca.mjs",
+    "static/media/ort.bundle.min.mjs": "/imageBgRemover/static/media/ort.bundle.min.4d71017f98101fc95f99.mjs",
     "index.html": "/imageBgRemover/index.html",
-    "main.3e6b1529.css.map": "/imageBgRemover/static/css/main.3e6b1529.css.map",
-    "main.fdb827eb.js.map": "/imageBgRemover/static/js/main.fdb827eb.js.map",
-    "626.7407664a.chunk.js.map": "/imageBgRemover/static/js/626.7407664a.chunk.js.map",
-    "284.4dad1264.chunk.js.map": "/imageBgRemover/static/js/284.4dad1264.chunk.js.map"
+    "main.f99bb34d.css.map": "/imageBgRemover/static/css/main.f99bb34d.css.map",
+    "main.aef245cb.js.map": "/imageBgRemover/static/js/main.aef245cb.js.map",
+    "626.26a0030b.chunk.js.map": "/imageBgRemover/static/js/626.26a0030b.chunk.js.map",
+    "284.d8b9a392.chunk.js.map": "/imageBgRemover/static/js/284.d8b9a392.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e6b1529.css",
-    "static/js/main.fdb827eb.js"
+    "static/css/main.f99bb34d.css",
+    "static/js/main.aef245cb.js"
   ]
 }
